@@ -10,7 +10,7 @@ function ToDoList() {
         setNewTask(event.target.value);
     };
 
-    function addTask(){
+    const addTask = () => {
         if (newTask.trim() !== "") {
             setTasks(t => [...t, newTask])
             setNewTask("");
@@ -18,12 +18,12 @@ function ToDoList() {
         
     };
 
-    function deleteTask (index){
+    const deleteTask = (index) => {
         const updatedTasks = tasks.filter((_, i) => i !== index);
         setTasks(updatedTasks);
     };
 
-    function moveTaskUp (index) {
+    const moveTaskUp = (index) => {
         if (index > 0 ) {
             const updatedTasks = [...tasks];
             [updatedTasks[index], updatedTasks[index - 1]] = 
@@ -33,8 +33,8 @@ function ToDoList() {
 
     };
 
-    function moveTaskDown(index){
-        if (index < tasks.length - 1 ) {
+    const moveTaskDown = (index) => {
+        if (index < tasks.length - 1) {
             const updatedTasks = [...tasks];
             [updatedTasks [index], updatedTasks [index + 1]] = 
             [updatedTasks[index + 1], updatedTasks[index]];
@@ -60,8 +60,7 @@ function ToDoList() {
             className="add-button"
             onClick={addTask}>
                 Add
-            
-            
+     
             </button>
             
         </div>
@@ -88,11 +87,12 @@ function ToDoList() {
             onClick={() => moveTaskDown(index)}>
             Down
             </button>
-        </li>)}
+        </li>
+    )
+}
 </ol>
 
     </div>
     );
-}
-
-export default ToDoList
+};
+export default ToDoList;
